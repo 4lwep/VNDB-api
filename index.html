@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="scripts/script.js" defer></script>
+    <script src="scripts/ApiHandling.js" defer></script>
+    <script src="scripts/PageElements.js" defer></script>
+
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/search.css" />
+  </head>
+  <body>
+    <div class="search-menu" id="searchMenu">
+      <header>
+        <img src="assets/close.png" alt="" id="closeSearch" />
+        <input
+          class="search-bar"
+          id="searchBar"
+          type="text"
+          placeholder="Search for a game..."
+        />
+        <button id="searchButton">Buscar</button>
+      </header>
+      <div class="vn-search-list" id="vnSearchList"></div>
+    </div>
+    <header>
+      <h1>INICIO</h1>
+      <button>Buscar</button>
+      <p>Cuenta</p>
+    </header>
+    <main>
+      <form>
+        <input type="checkbox" name="explicit" id="explicitCheck" />
+        <label for="explicit">Mostrar contenido explícito</label>
+      </form>
+      <div class="vn-list" id="vnList"></div>
+    </main>
+  </body>
+</html>
