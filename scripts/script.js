@@ -8,6 +8,7 @@
   let searchButton = document.getElementById("searchButton");
   let explicitCheck = document.getElementById("explicitCheck");
   let closeSearch = document.getElementById("closeSearch");
+  let toggleSearch = document.getElementById("toggleSearch");
 
   searchBar.addEventListener("input", async () => {
     currentSearchList = await searchVnByName(searchBar.value);
@@ -32,5 +33,10 @@
   closeSearch.addEventListener("click", (event) => {
     let search = document.getElementById("searchMenu");
     search.style = "display: none";
+  });
+
+  toggleSearch.addEventListener("click", (event) => {
+    let search = document.getElementById("searchMenu");
+    search.style = "display: block";
   });
 })();
