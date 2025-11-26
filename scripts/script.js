@@ -26,8 +26,11 @@
   searchButton.addEventListener("click", async (event) => {
     event.preventDefault();
 
+    let search = document.getElementById("searchMenu");
+
     currentList = currentSearchList;
     placeVnList(currentList, explicit);
+    search.style = "display: none";
   });
 
   closeSearch.addEventListener("click", (event) => {
