@@ -10,6 +10,9 @@
   let closeSearch = document.getElementById("closeSearch");
   let toggleSearch = document.getElementById("toggleSearch");
 
+  currentList = await getMostRatedVn();
+  placeVnList(currentList, explicit);
+
   searchBar.addEventListener("input", async () => {
     currentSearchList = await searchVnByName(searchBar.value);
     placeVnListInSearch(currentSearchList, explicit);
