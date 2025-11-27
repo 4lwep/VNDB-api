@@ -1,29 +1,18 @@
 (async function () {
-  let explicit = false;
-
   let currentList;
   let currentSearchList;
 
   let searchBar = document.getElementById("searchBar");
   let searchButton = document.getElementById("searchButton");
-  let explicitCheck = document.getElementById("explicitCheck");
   let closeSearch = document.getElementById("closeSearch");
   let toggleSearch = document.getElementById("toggleSearch");
 
   currentList = await getMostRatedVn();
-  placeVnList(currentList, explicit);
+  placeVnList(currentList);
 
   searchBar.addEventListener("input", async () => {
     currentSearchList = await searchVnByName(searchBar.value);
-    placeVnListInSearch(currentSearchList, explicit);
-  });
-
-  explicitCheck.addEventListener("change", async () => {
-    if (explicitCheck.checked) {
-      explicit = showExplicit(currentList, currentSearchList, explicit);
-    } else {
-      explicit = hideExplicit(currentList, currentSearchList, explicit);
-    }
+    placeVnListInSearch(currentSearchList);
   });
 
   searchButton.addEventListener("click", async (event) => {
@@ -32,16 +21,16 @@
     let search = document.getElementById("searchMenu");
 
     currentList = currentSearchList;
-    placeVnList(currentList, explicit);
+    placeVnList(currentList);
     search.style = "display: none";
   });
 
-  closeSearch.addEventListener("click", (event) => {
+  closeSearch.addEventListener("click", () => {
     let search = document.getElementById("searchMenu");
     search.style = "display: none";
   });
 
-  toggleSearch.addEventListener("click", (event) => {
+  toggleSearch.addEventListener("click", () => {
     let search = document.getElementById("searchMenu");
     search.style = "display: block";
   });
