@@ -32,20 +32,12 @@ main {
 .user-details {
   position: relative;
   position: fixed;
-  top: 13%;
+  top: 120px;
   left: 1.5%;
   width: 17%;
-  height: 83%;
+  height: 80vh;
   background-color: white;
   background-color: #141414;
-}
-
-.vn-list {
-  display: flex;
-  place-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
-  padding: 30px;
 }
 
 .info {
@@ -56,6 +48,14 @@ main {
   background-color: #141414;
   padding: 30px;
   z-index: 1;
+}
+
+.vn-list {
+  display: flex;
+  place-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 30px;
 }
 
 .subahibi {
