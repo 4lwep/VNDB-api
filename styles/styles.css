@@ -10,6 +10,7 @@
 
 body {
   display: grid;
+  background-color: var(--bgColor);
 }
 
 body > header {
@@ -25,7 +26,6 @@ body > header {
 
 main {
   padding: 100px 30px 100px 20%;
-  background-color: var(--bgColor);
 }
 
 .user-details {

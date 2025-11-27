@@ -11,13 +11,12 @@
   currentList = await placeTopVns();
 
   searchBar.addEventListener("input", async () => {
-    currentSearchList = await searchVnByName(searchBar.value);
-    placeVnListInSearch(currentSearchList);
+    currentSearchList = await placeSearchElements(searchBar.value);
   });
 
   searchButton.addEventListener("click", async (event) => {
     event.preventDefault();
-    currentList = placeSearchResults(currentSearchList, searchBar.value);
+    currentList = await placeSearchResults(currentSearchList, searchBar.value);
   });
 
   closeSearch.addEventListener("click", () => {
@@ -25,10 +24,8 @@
     search.style = "display: none";
   });
 
-  toggleSearch.addEventListener("click", () => {
-    let search = document.getElementById("searchMenu");
-    search.style = "display: block";
-    //TODO: mostrar directamente las visual novels si hay algo en la barra de búsqueda (no esperar a que el usuario la actualice)
+  toggleSearch.addEventListener("click", async () => {
+    currentSearchList = await prepareSearch(searchBar.value);
   });
 
   topVns.addEventListener("click", async () => {

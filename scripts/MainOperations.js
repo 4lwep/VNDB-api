@@ -30,3 +30,23 @@ const placeTopVns = async () => {
 
   return currentList;
 };
+
+const placeSearchElements = async (search) => {
+  let currentSearchList = await searchVnByName(search);
+  placeVnListInSearch(currentSearchList);
+
+  return currentSearchList;
+};
+
+const prepareSearch = async (currentSearch) => {
+  let elements;
+  let search = document.getElementById("searchMenu");
+  search.style = "display: block";
+
+  if (currentSearch) {
+    elements = await placeSearchElements(currentSearch);
+  }
+
+  return elements;
+  //TODO: mostrar directamente las visual novels si hay algo en la barra de búsqueda (no esperar a que el usuario la actualice)
+};
