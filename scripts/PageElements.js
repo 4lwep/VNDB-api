@@ -29,9 +29,10 @@ const placeVnListInSearch = (data) => {
 
 const placeVnList = (data) => {
   /*title, image, image.sexual, length, developers?*/
-  let vnList = document.getElementById("vnList");
-
-  vnList.innerHTML = "";
+  let info = document.getElementById("infoSection");
+  let vnList = document.createElement("div");
+  vnList.className = "vn-list";
+  vnList.id = "vnList";
 
   data.results.forEach((vn) => {
     if (vn.image.sexual < 1) {
@@ -52,6 +53,8 @@ const placeVnList = (data) => {
       vnCard.appendChild(vnLenght);
 
       vnList.appendChild(vnCard);
+
+      info.appendChild(vnList);
     }
   });
 };

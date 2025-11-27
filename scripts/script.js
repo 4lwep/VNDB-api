@@ -6,9 +6,9 @@
   let searchButton = document.getElementById("searchButton");
   let closeSearch = document.getElementById("closeSearch");
   let toggleSearch = document.getElementById("toggleSearch");
+  let topVns = document.getElementById("topVns");
 
-  currentList = await getMostRatedVn();
-  placeVnList(currentList);
+  currentList = await placeTopVns();
 
   searchBar.addEventListener("input", async () => {
     currentSearchList = await searchVnByName(searchBar.value);
@@ -17,12 +17,7 @@
 
   searchButton.addEventListener("click", async (event) => {
     event.preventDefault();
-
-    let search = document.getElementById("searchMenu");
-
-    currentList = currentSearchList;
-    placeVnList(currentList);
-    search.style = "display: none";
+    currentList = placeSearchResults(currentSearchList, searchBar.value);
   });
 
   closeSearch.addEventListener("click", () => {
@@ -33,5 +28,10 @@
   toggleSearch.addEventListener("click", () => {
     let search = document.getElementById("searchMenu");
     search.style = "display: block";
+    //TODO: mostrar directamente las visual novels si hay algo en la barra de búsqueda (no esperar a que el usuario la actualice)
+  });
+
+  topVns.addEventListener("click", async () => {
+    currentList = await placeTopVns();
   });
 })();
