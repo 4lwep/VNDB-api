@@ -11,7 +11,7 @@
   currentList = await placeTopVns();
 
   searchBar.addEventListener("input", async () => {
-    currentSearchList = await placeSearchElements(searchBar.value);
+    currentSearchList = await placeSearchElementsInSearch(searchBar.value);
   });
 
   searchButton.addEventListener("click", async (event) => {

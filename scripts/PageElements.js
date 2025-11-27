@@ -5,14 +5,11 @@ const placeVnListInSearch = (data) => {
   vnSearchList.innerHTML = "";
 
   data.results.forEach((vn) => {
-    if (vn.image.sexual < 1) {
+    if (vn.image && vn.image.sexual < 1) {
       let vnSearchEntry = document.createElement("div");
       vnSearchEntry.className = "vn-search-entry";
       let vnPic = document.createElement("img");
       vnPic.src = vn.image.thumbnail;
-      /*if (vn.image.sexual >= 1 && !explicit) {
-        vnPic.className = "explicit-img";
-      }*/
       let vnTitle = document.createElement("h4");
       vnTitle.textContent = vn.title;
       let vnLenght = document.createElement("p");
@@ -28,21 +25,17 @@ const placeVnListInSearch = (data) => {
 };
 
 const placeVnList = (data) => {
-  /*title, image, image.sexual, length, developers?*/
   let info = document.getElementById("infoSection");
   let vnList = document.createElement("div");
   vnList.className = "vn-list";
   vnList.id = "vnList";
 
   data.results.forEach((vn) => {
-    if (vn.image.sexual < 1) {
+    if (vn.image && vn.image.sexual < 1) {
       let vnCard = document.createElement("div");
       vnCard.className = "vn-card";
       let vnPic = document.createElement("img");
       vnPic.src = vn.image.thumbnail;
-      /*if (vn.image.sexual >= 1 && !explicit) {
-        vnPic.className = "explicit-img";
-      }*/
       let vnTitle = document.createElement("h4");
       vnTitle.textContent = vn.title;
       let vnLenght = document.createElement("p");
