@@ -103,14 +103,41 @@ const showProfileInfo = async (data) => {
   tagsInfo.className = "tags-info";
   userInfo.appendChild(tagsInfo);
 
+  let userLabels = await getUserLabels(data.id);
+  let finishedId;
+  let playingId;
+  let droppedId;
+  let wishlistId;
+
+  userLabels.labels.forEach((label) => {
+    switch (label.label) {
+      case "Finished": {
+        finishedId = label.id;
+        break;
+      }
+      case "Playing": {
+        playingId = label.id;
+        break;
+      }
+      case "Dropped": {
+        droppedId = label.id;
+        break;
+      }
+      case "Wishlist": {
+        wishlistId = label.id;
+        break;
+      }
+    }
+  });
+
   let finishedTag = document.createElement("p");
-  finishedTag.textContent = "Finished";
+  finishedTag.textContent = `Terminadas (${(await getUserVnByLabel(data.id, finishedId)).results.length})`;
   let playingTag = document.createElement("p");
-  playingTag.textContent = "Playing";
+  playingTag.textContent = `Jugando (${(await getUserVnByLabel(data.id, playingId)).results.length})`;
   let droppedTag = document.createElement("p");
-  droppedTag.textContent = "Dropped";
+  droppedTag.textContent = `Abandonadas (${(await getUserVnByLabel(data.id, droppedId)).results.length})`;
   let wishlistTag = document.createElement("p");
-  wishlistTag.textContent = "Wishlist";
+  wishlistTag.textContent = `Lista de deseos (${(await getUserVnByLabel(data.id, wishlistId)).results.length})`;
 
   tagsInfo.appendChild(finishedTag);
   tagsInfo.appendChild(playingTag);
@@ -126,9 +153,6 @@ const showProfileInfo = async (data) => {
   userInfo.appendChild(logOutButton);
 
   welcomeText.textContent = "Bienvenid@ " + data.username;
-
-  let finishedVn = await getUserFinishedVn(data.id, 2);
-  console.log(finishedVn.results.length);
 };
 
 const showNoProfileMessage = () => {

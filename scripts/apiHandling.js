@@ -71,14 +71,13 @@ const authenticate = (token) => {
     })
     .then((data) => {
       showProfileInfo(data);
-      console.log("Respuesta:", data);
     })
     .catch((error) => {
       console.error("Hubo un problema:", error);
     });
 };
 
-const getUserFinishedVn = async (user, finishedLabelId) => {
+const getUserVnByLabel = async (user, label) => {
   let response = await fetch("https://api.vndb.org/kana/ulist", {
     method: "POST",
     headers: {
@@ -86,7 +85,7 @@ const getUserFinishedVn = async (user, finishedLabelId) => {
     },
     body: JSON.stringify({
       user: user,
-      filters: ["label", "=", finishedLabelId],
+      filters: ["label", "=", label],
       fields:
         "vn.title, labels.label, vn.image.thumbnail, vn.image.sexual, vn.rating, vn.length, vn.released",
       results: 100,
@@ -94,6 +93,24 @@ const getUserFinishedVn = async (user, finishedLabelId) => {
   });
 
   const data = await response.json();
-  console.log(data);
+
   return data;
+};
+
+const getUserLabels = async (userId) => {
+  return await fetch("https://api.vndb.org/kana/ulist_labels?user=" + userId, {
+    method: "GET",
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Error en la petición: " + response.status);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      console.error("Hubo un problema:", error);
+    });
 };
