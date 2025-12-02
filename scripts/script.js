@@ -7,6 +7,7 @@
   let closeSearch = document.getElementById("closeSearch");
   let toggleSearch = document.getElementById("toggleSearch");
   let topVns = document.getElementById("topVns");
+  let account = document.getElementById("account");
 
   currentList = await placeTopVns();
 
@@ -30,5 +31,9 @@
 
   topVns.addEventListener("click", async () => {
     currentList = await placeTopVns();
+  });
+
+  account.addEventListener("click", async () => {
+    authenticate();
   });
 })();

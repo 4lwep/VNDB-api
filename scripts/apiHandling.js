@@ -37,3 +37,24 @@ const searchVnByName = async (name) => {
   const data = await response.json();
   return data;
 };
+
+const authenticate = (token) => {
+  fetch("https://api.vndb.org/kana/authinfo", {
+    method: "GET",
+    headers: {
+      Authorization: token,
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Error en la petición: " + response.status);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log("Respuesta:", data);
+    })
+    .catch((error) => {
+      console.error("Hubo un problema:", error);
+    });
+};

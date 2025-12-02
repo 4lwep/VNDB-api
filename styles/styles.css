@@ -63,14 +63,6 @@ main {
   padding: 30px;
 }
 
-.subahibi {
-  position: absolute;
-  bottom: -200px;
-  right: -40px;
-  width: 300px;
-  z-index: 0;
-} /*Cambiar*/
-
 .search-info {
   color: #fff;
 }

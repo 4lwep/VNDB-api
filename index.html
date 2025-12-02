@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="scripts/script.js" defer></script>
-    <script src="scripts/ApiHandling.js"></script>
-    <script src="scripts/PageElements.js"></script>
-    <script src="scripts/MainOperations.js"></script>
+    <script src="scripts/apiHandling.js"></script>
+    <script src="scripts/PageElements/lists.js"></script>
+    <script src="scripts/PageElements/entries.js"></script>
+    <script src="scripts/mainOperations.js"></script>
 
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="stylesheet" href="styles/search.css" />
     <link rel="stylesheet" href="styles/vncard.css" />
+    <link rel="stylesheet" href="styles/userdetailsside.css" />
   </head>
   <body>
     <div class="search-menu" id="searchMenu">
@@ -31,11 +33,11 @@
       <h1>INICIO</h1>
       <button id="toggleSearch">Buscar</button>
       <p id="topVns">Top Visual Novels</p>
-      <p>Cuenta</p>
+      <p id="account">Cuenta</p>
     </header>
     <main>
       <div class="user-details">
-        <!--<img class="subahibi" src="assets/subahibi.webp" alt="" />-->
+        <img class="subahibi" src="assets/subahibi.webp" alt="" />
       </div>
       <div class="info" id="infoSection"></div>
     </main>
