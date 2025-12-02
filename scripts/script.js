@@ -10,6 +10,7 @@
   let topVns = document.getElementById("topVns");
   let account = document.getElementById("account");
   let loginButton = document.getElementById("loginButton");
+  let userSearchButton = document.getElementById("userSearchButton");
 
   currentList = await placeTopVns();
 
@@ -46,5 +47,9 @@
 
   loginButton.addEventListener("click", () => {
     authenticate(document.getElementById("tokenField").value);
+  });
+
+  userSearchButton.addEventListener("click", (event) => {
+    event.preventDefault();
   });
 })();
