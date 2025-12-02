@@ -29,7 +29,8 @@ body > header {
   border-bottom: #0a1430 solid 3px;
 }
 
-body > header > p:hover {
+.lists > p:hover,
+.search-and-account > p:hover {
   cursor: pointer;
 }
 
@@ -57,4 +58,19 @@ main {
 
 .list-title {
   text-align: center;
+}
+
+.search-and-account {
+  display: flex;
+  place-items: center;
+  gap: 10px;
+}
+
+.search-and-account > button {
+  padding: 10px;
+}
+
+.lists {
+  display: flex;
+  gap: 30px;
 }
