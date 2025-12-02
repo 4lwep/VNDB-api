@@ -42,7 +42,7 @@ const authenticate = (token) => {
   fetch("https://api.vndb.org/kana/authinfo", {
     method: "GET",
     headers: {
-      Authorization: token,
+      Authorization: "Token " + token,
     },
   })
     .then((response) => {

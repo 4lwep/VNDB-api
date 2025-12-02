@@ -1,6 +1,7 @@
 (async function () {
   let currentList;
   let currentSearchList;
+  let mostrarLogin = false;
 
   let searchBar = document.getElementById("searchBar");
   let searchButton = document.getElementById("searchButton");
@@ -8,6 +9,7 @@
   let toggleSearch = document.getElementById("toggleSearch");
   let topVns = document.getElementById("topVns");
   let account = document.getElementById("account");
+  let loginButton = document.getElementById("loginButton");
 
   currentList = await placeTopVns();
 
@@ -34,6 +36,15 @@
   });
 
   account.addEventListener("click", async () => {
-    authenticate();
+    mostrarLogin = !mostrarLogin;
+    let style;
+
+    mostrarLogin ? (style = "display: grid") : (style = "display: none");
+
+    document.getElementById("login").style = style;
+  });
+
+  loginButton.addEventListener("click", () => {
+    authenticate(document.getElementById("tokenField").value);
   });
 })();
