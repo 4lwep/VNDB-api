@@ -1,3 +1,6 @@
+const VN_ENTRY_FIELDS =
+  "title, image.thumbnail, image.sexual, length, rating, description, released";
+
 const getMostRatedVn = async () => {
   let response = await fetch("https://api.vndb.org/kana/vn", {
     method: "POST",
@@ -6,7 +9,7 @@ const getMostRatedVn = async () => {
     },
     body: JSON.stringify({
       filters: ["rating", ">", "80"],
-      fields: "title, image.thumbnail, image.sexual, length, rating",
+      fields: VN_ENTRY_FIELDS,
       sort: "rating",
       reverse: true,
       results: 100,
@@ -25,7 +28,8 @@ const searchVnByName = async (name) => {
     },
     body: JSON.stringify({
       filters: ["search", "=", name],
-      fields: "title, image.thumbnail, image.sexual, length",
+      fields:
+        "title, image.thumbnail, image.sexual, rating, length, description, released",
       results: 100,
     }),
   });

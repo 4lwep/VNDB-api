@@ -23,6 +23,11 @@ body > header {
   padding: 15px;
   background-color: #1e3a8a;
   border-bottom: #0a1430 solid 3px;
+  color: #fff;
+}
+
+body > header > p:hover {
+  cursor: pointer;
 }
 
 main {
@@ -54,7 +59,7 @@ main {
   display: flex;
   place-content: center;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 15px;
   padding: 30px;
 }
 
@@ -64,32 +69,7 @@ main {
   right: -40px;
   width: 300px;
   z-index: 0;
-}
-
-.vn-card {
-  display: flex;
-  flex-direction: column;
-  place-items: center;
-  width: 200px;
-  background-color: blue;
-  padding: 10px;
-  border-radius: 15px;
-}
-
-.vn-card > img {
-  width: 100%;
-  background-color: blue;
-  border-radius: 15px;
-}
-
-.vn-card > h4 {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.vn-card > p {
-  align-self: flex-end;
-}
+} /*Cambiar*/
 
 .search-info {
   color: #fff;
