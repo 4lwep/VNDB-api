@@ -11,6 +11,7 @@
   let account = document.getElementById("account");
   let loginButton = document.getElementById("loginButton");
   let userSearchButton = document.getElementById("userSearchButton");
+  let latestVns = document.getElementById("latestVns");
 
   currentList = await placeTopVns();
 
@@ -51,5 +52,9 @@
 
   userSearchButton.addEventListener("click", (event) => {
     event.preventDefault();
+  });
+
+  latestVns.addEventListener("click", async () => {
+    currentList = await placeLatestVns();
   });
 })();

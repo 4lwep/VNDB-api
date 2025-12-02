@@ -8,9 +8,27 @@ const getMostRatedVn = async () => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      filters: ["rating", ">", "80"],
       fields: VN_ENTRY_FIELDS,
       sort: "rating",
+      reverse: true,
+      results: 100,
+    }),
+  });
+
+  const data = await response.json();
+  return data;
+};
+
+const getLatestVn = async () => {
+  let response = await fetch("https://api.vndb.org/kana/vn", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      filters: ["released", "<", new Date().toJSON().slice(0, 10)],
+      fields: VN_ENTRY_FIELDS,
+      sort: "released",
       reverse: true,
       results: 100,
     }),

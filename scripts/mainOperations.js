@@ -64,6 +64,25 @@ const placeTopVns = async () => {
   return currentList;
 };
 
+const placeLatestVns = async () => {
+  let info = document.getElementById("infoSection");
+
+  info.innerHTML = "";
+
+  let topVnsText = document.createElement("h1");
+  topVnsText.className = "list-title";
+  topVnsText.textContent = "Últimos lanzamientos";
+  info.appendChild(topVnsText);
+
+  let divide = document.createElement("hr");
+  info.appendChild(divide);
+
+  let currentList = await getLatestVn();
+  placeVnList(currentList);
+
+  return currentList;
+};
+
 const showProfileInfo = async (data) => {
   let tagsInfo = document.createElement("div");
   let userInfoTitle = document.createElement("div");
