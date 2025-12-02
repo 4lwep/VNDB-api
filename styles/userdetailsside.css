@@ -2,7 +2,7 @@
   display: flex;
   position: fixed;
   flex-direction: column;
-  top: 120px;
+  top: 140px;
   left: 1.5%;
   width: 17%;
   height: 80vh;
@@ -15,8 +15,19 @@
 }
 
 .subahibi {
-  margin-bottom: -200px;
-  margin-right: -100px;
-  width: 100%;
-  margin-left: 120px;
+  position: absolute;
+  width: 300px;
+  top: 400px;
+  left: 40%;
+}
+
+.vn-welcome-text {
+  width: 90%;
+  height: 100px;
+  background-color: #000;
+  color: white;
+  filter: opacity(50%);
+  margin-left: 5%;
+  margin-top: 19vh;
+  padding: 10px;
 }
