@@ -52,9 +52,30 @@ const authenticate = (token) => {
       return response.json();
     })
     .then((data) => {
+      showProfileInfo(data);
       console.log("Respuesta:", data);
     })
     .catch((error) => {
       console.error("Hubo un problema:", error);
     });
+};
+
+const getUserFinishedVn = async (user, finishedLabelId) => {
+  let response = await fetch("https://api.vndb.org/kana/ulist", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      user: user,
+      filters: ["label", "=", finishedLabelId],
+      fields:
+        "vn.title, labels.label, vn.image.thumbnail, vn.image.sexual, vn.rating, vn.length, vn.released",
+      results: 100,
+    }),
+  });
+
+  const data = await response.json();
+  console.log(data);
+  return data;
 };

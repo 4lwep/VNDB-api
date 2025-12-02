@@ -19,3 +19,7 @@
 .login > button {
   width: 100px;
 }
+
+.login > p {
+  color: #000;
+}

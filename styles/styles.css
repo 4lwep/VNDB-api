@@ -14,6 +14,7 @@ body {
   display: grid;
   background-color: var(--bgColor);
   font-family: "Open Sans", sans-serif;
+  color: #fff;
 }
 
 body > header {
@@ -26,7 +27,6 @@ body > header {
   padding: 15px;
   background-color: #763791; /*#1e3a8a*/
   border-bottom: #0a1430 solid 3px;
-  color: #fff;
 }
 
 body > header > p:hover {
@@ -55,6 +55,6 @@ main {
   padding: 30px;
 }
 
-.search-info {
-  color: #fff;
+.list-title {
+  text-align: center;
 }

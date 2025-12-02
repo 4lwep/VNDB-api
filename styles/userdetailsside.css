@@ -8,10 +8,41 @@
   height: 80vh;
   background-color: #141414;
   overflow: hidden;
+  padding: 10px;
 }
 
 .user-info {
+  display: flex;
+  flex-direction: column;
   height: 60%;
+}
+
+.user-info-title {
+  width: 100%;
+}
+
+.vn-welcome-text {
+  height: 100px;
+  background-color: #000;
+  color: white;
+  filter: opacity(70%);
+  margin-left: 5%;
+  margin-top: 19vh;
+  padding: 10px;
+}
+
+.tags-info {
+  padding: 30px;
+}
+
+.username {
+  text-align: center;
+}
+
+.logout-button {
+  place-self: center;
+  padding: 10px;
+  width: 150px;
 }
 
 .subahibi {
@@ -19,15 +50,4 @@
   width: 300px;
   top: 400px;
   left: 40%;
-}
-
-.vn-welcome-text {
-  width: 90%;
-  height: 100px;
-  background-color: #000;
-  color: white;
-  filter: opacity(50%);
-  margin-left: 5%;
-  margin-top: 19vh;
-  padding: 10px;
 }
