@@ -34,17 +34,6 @@ main {
   padding: 100px 30px 100px 20%;
 }
 
-.user-details {
-  position: relative;
-  position: fixed;
-  top: 120px;
-  left: 1.5%;
-  width: 17%;
-  height: 80vh;
-  background-color: white;
-  background-color: #141414;
-}
-
 .info {
   display: grid;
   place-content: center;
