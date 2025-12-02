@@ -25,8 +25,19 @@ body > header {
   width: 100%;
   justify-content: space-between;
   padding: 15px;
-  background-color: #763791; /*#1e3a8a*/
+  background-color: #763791;
   border-bottom: #0a1430 solid 3px;
+}
+
+.search-and-account {
+  display: flex;
+  place-items: center;
+  gap: 30px;
+}
+
+.lists {
+  display: flex;
+  gap: 30px;
 }
 
 .lists > p:hover,
@@ -58,19 +69,4 @@ main {
 
 .list-title {
   text-align: center;
-}
-
-.search-and-account {
-  display: flex;
-  place-items: center;
-  gap: 10px;
-}
-
-.search-and-account > button {
-  padding: 10px;
-}
-
-.lists {
-  display: flex;
-  gap: 30px;
 }
