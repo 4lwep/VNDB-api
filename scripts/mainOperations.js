@@ -138,11 +138,14 @@ const showProfileInfo = async (data) => {
   droppedTag.textContent = `Abandonadas (${(await getUserVnByLabel(data.id, droppedId)).results.length})`;
   let wishlistTag = document.createElement("p");
   wishlistTag.textContent = `Lista de deseos (${(await getUserVnByLabel(data.id, wishlistId)).results.length})`;
+  let all = document.createElement("p");
+  all.textContent = `Todas (${(await getUserVnByLabel(data.id, wishlistId)).results.length + (await getUserVnByLabel(data.id, finishedId)).results.length + (await getUserVnByLabel(data.id, playingId)).results.length + (await getUserVnByLabel(data.id, droppedId)).results.length})`;
 
   tagsInfo.appendChild(finishedTag);
   tagsInfo.appendChild(playingTag);
   tagsInfo.appendChild(droppedTag);
   tagsInfo.appendChild(wishlistTag);
+  tagsInfo.appendChild(all);
 
   logOutButton.textContent = "Cerrar sesión";
   logOutButton.className = "logout-button";
