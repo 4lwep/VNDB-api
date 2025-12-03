@@ -1,6 +1,9 @@
 const VN_ENTRY_FIELDS =
   "title, image.thumbnail, image.sexual, length, rating, description, released";
 
+const USER_VN_ENTRY_FIELDS =
+  "vn.title, vn.image.thumbnail, vn.image.sexual, vn.length, vn.rating, vn.description, vn.released";
+
 const getMostRatedVn = async () => {
   let response = await fetch("https://api.vndb.org/kana/vn", {
     method: "POST",
@@ -86,8 +89,25 @@ const getUserVnByLabel = async (user, label) => {
     body: JSON.stringify({
       user: user,
       filters: ["label", "=", label],
-      fields:
-        "vn.title, labels.label, vn.image.thumbnail, vn.image.sexual, vn.rating, vn.length, vn.released",
+      fields: USER_VN_ENTRY_FIELDS,
+      results: 100,
+    }),
+  });
+
+  const data = await response.json();
+
+  return data;
+};
+
+const getUserAllVn = async (user) => {
+  let response = await fetch("https://api.vndb.org/kana/ulist", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      user: user,
+      fields: USER_VN_ENTRY_FIELDS,
       results: 100,
     }),
   });

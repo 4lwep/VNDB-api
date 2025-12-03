@@ -141,6 +141,91 @@ const showProfileInfo = async (data) => {
   let all = document.createElement("p");
   all.textContent = `Todas (${(await getUserVnByLabel(data.id, wishlistId)).results.length + (await getUserVnByLabel(data.id, finishedId)).results.length + (await getUserVnByLabel(data.id, playingId)).results.length + (await getUserVnByLabel(data.id, droppedId)).results.length})`;
 
+  finishedTag.addEventListener("click", async () => {
+    let info = document.getElementById("infoSection");
+
+    info.innerHTML = "";
+
+    let finishedVnsText = document.createElement("h1");
+    finishedVnsText.className = "list-title";
+    finishedVnsText.textContent = "Visual novels terminadas";
+    info.appendChild(finishedVnsText);
+
+    let divide = document.createElement("hr");
+    info.appendChild(divide);
+
+    let userVnByLabel = await getUserVnByLabel(data.id, finishedId);
+    placeUserVnList(userVnByLabel);
+  });
+
+  playingTag.addEventListener("click", async () => {
+    let info = document.getElementById("infoSection");
+
+    info.innerHTML = "";
+
+    let playingVnsText = document.createElement("h1");
+    playingVnsText.className = "list-title";
+    playingVnsText.textContent = "Jugando actualmente";
+    info.appendChild(playingVnsText);
+
+    let divide = document.createElement("hr");
+    info.appendChild(divide);
+
+    let userVnByLabel = await getUserVnByLabel(data.id, playingId);
+    placeUserVnList(userVnByLabel);
+  });
+
+  droppedTag.addEventListener("click", async () => {
+    let info = document.getElementById("infoSection");
+
+    info.innerHTML = "";
+
+    let droppedVnsText = document.createElement("h1");
+    droppedVnsText.className = "list-title";
+    droppedVnsText.textContent = "Visual novels abandonadas";
+    info.appendChild(droppedVnsText);
+
+    let divide = document.createElement("hr");
+    info.appendChild(divide);
+
+    let userVnByLabel = await getUserVnByLabel(data.id, droppedId);
+    placeUserVnList(userVnByLabel);
+  });
+
+  wishlistTag.addEventListener("click", async () => {
+    let info = document.getElementById("infoSection");
+
+    info.innerHTML = "";
+
+    let wishlistVnsText = document.createElement("h1");
+    wishlistVnsText.className = "list-title";
+    wishlistVnsText.textContent = "Lista de deseos";
+    info.appendChild(wishlistVnsText);
+
+    let divide = document.createElement("hr");
+    info.appendChild(divide);
+
+    let userVnByLabel = await getUserVnByLabel(data.id, wishlistId);
+    placeUserVnList(userVnByLabel);
+  });
+
+  all.addEventListener("click", async () => {
+    let info = document.getElementById("infoSection");
+
+    info.innerHTML = "";
+
+    let allVnsText = document.createElement("h1");
+    allVnsText.className = "list-title";
+    allVnsText.textContent = "Visual novels de " + data.username;
+    info.appendChild(allVnsText);
+
+    let divide = document.createElement("hr");
+    info.appendChild(divide);
+
+    let UserAllVn = await getUserAllVn(data.id);
+    placeUserVnList(UserAllVn);
+  });
+
   tagsInfo.appendChild(finishedTag);
   tagsInfo.appendChild(playingTag);
   tagsInfo.appendChild(droppedTag);

@@ -20,4 +20,14 @@ const placeVnList = (data) => {
   info.appendChild(vnList);
 };
 
-const noLoginText = () => {};
+const placeUserVnList = (data) => {
+  let info = document.getElementById("infoSection");
+  let vnList = document.createElement("div");
+  vnList.className = "vn-list";
+  vnList.id = "vnList";
+
+  data.results.forEach((vn) => {
+    createVnEntry(vn.vn, vnList);
+  });
+  info.appendChild(vnList);
+};
