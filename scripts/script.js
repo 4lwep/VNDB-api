@@ -1,5 +1,4 @@
 (async function () {
-  let currentList;
   let currentSearchList;
   let mostrarLogin = false;
 
@@ -12,8 +11,9 @@
   let loginButton = document.getElementById("loginButton");
   let userSearchButton = document.getElementById("userSearchButton");
   let latestVns = document.getElementById("latestVns");
+  let gitHubStar = document.getElementById("gitHubStar");
 
-  currentList = await placeTopVns();
+  await placeTopVns();
 
   searchBar.addEventListener("input", async () => {
     currentSearchList = await placeSearchElementsInSearch(searchBar.value);
@@ -21,7 +21,7 @@
 
   searchButton.addEventListener("click", async (event) => {
     event.preventDefault();
-    currentList = await placeSearchResults(currentSearchList, searchBar.value);
+    await placeSearchResults(currentSearchList, searchBar.value);
   });
 
   closeSearch.addEventListener("click", () => {
@@ -34,7 +34,7 @@
   });
 
   topVns.addEventListener("click", async () => {
-    currentList = await placeTopVns();
+    await placeTopVns();
   });
 
   account.addEventListener("click", async () => {
@@ -55,6 +55,10 @@
   });
 
   latestVns.addEventListener("click", async () => {
-    currentList = await placeLatestVns();
+    await placeLatestVns();
+  });
+
+  gitHubStar.addEventListener("click", () => {
+    placeGithubStartsForm();
   });
 })();

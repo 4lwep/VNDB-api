@@ -134,3 +134,27 @@ const getUserLabels = async (userId) => {
       console.error("Hubo un problema:", error);
     });
 };
+
+const githubStarApi = (owner, repo, token) => {
+  let success = document.getElementById("successInfo");
+  success.textContent = "";
+
+  fetch(`https://api.github.com/user/starred/${owner}/${repo}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/vnd.github+json",
+      Authorization: `Bearer ${token}`,
+      "X-GitHub-Api-Version": "2022-11-28",
+      "Content-Length": "0",
+    },
+  })
+    .then((response) => {
+      if (response.status === 204) {
+        success.textContent = "Estrella añadida al repositorio correctamente!";
+      } else {
+        console.log(`Error: ${response.status}`);
+        success.textContent = "Error al añadir la estrella";
+      }
+    })
+    .catch((error) => console.error("Error en la petición:", error));
+};

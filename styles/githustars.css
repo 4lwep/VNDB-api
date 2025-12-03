@@ -1,0 +1,24 @@
+.github-form {
+  display: grid;
+  place-content: center;
+  margin-top: 30px;
+}
+
+.github-form > input {
+  width: 300px;
+}
+
+.github-form > p {
+  margin-top: 30px;
+}
+
+.github-form > button {
+  width: 200px;
+  margin-top: 30px;
+  padding: 10px;
+}
+
+.success-info {
+  margin-top: 30px;
+  text-align: right;
+}

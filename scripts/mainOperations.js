@@ -13,12 +13,9 @@ const placeSearchResults = (searchList, searchName) => {
     let divide = document.createElement("hr");
     info.appendChild(divide);
 
-    let currentList = searchList;
-    placeVnList(currentList);
+    placeVnList(searchList);
 
     search.style = "display: none";
-
-    return currentList;
   }
 };
 
@@ -58,10 +55,7 @@ const placeTopVns = async () => {
   let divide = document.createElement("hr");
   info.appendChild(divide);
 
-  let currentList = await getMostRatedVn();
-  placeVnList(currentList);
-
-  return currentList;
+  placeVnList(await getMostRatedVn());
 };
 
 const placeLatestVns = async () => {
@@ -77,10 +71,7 @@ const placeLatestVns = async () => {
   let divide = document.createElement("hr");
   info.appendChild(divide);
 
-  let currentList = await getLatestVn();
-  placeVnList(currentList);
-
-  return currentList;
+  placeVnList(await getLatestVn());
 };
 
 const showProfileInfo = async (data) => {
@@ -278,4 +269,65 @@ const showNoProfileMessage = () => {
   let welcomeText = document.getElementById("welcomeText");
   welcomeText.textContent =
     "Bienvenid@, registrate para empezar a gestionar tu propia lista de visual novels";
+};
+
+const placeGithubStartsForm = () => {
+  let info = document.getElementById("infoSection");
+
+  info.innerHTML = "";
+
+  let pageTitle = document.createElement("h1");
+  pageTitle.className = "list-title";
+  pageTitle.textContent = "Estrellas en GitHub";
+  info.appendChild(pageTitle);
+
+  let divide = document.createElement("hr");
+  divide.style = "width: 100vh";
+  info.appendChild(divide);
+
+  let form = document.createElement("form");
+  let userStarred = document.createElement("p");
+  let userStarredInput = document.createElement("input");
+  let repoStarred = document.createElement("p");
+  let repoStarredInput = document.createElement("input");
+  let token = document.createElement("p");
+  let tokenInput = document.createElement("input");
+  let submitButton = document.createElement("button");
+
+  let successInfo = document.createElement("p");
+  successInfo.className = "success-info";
+  successInfo.id = "successInfo";
+
+  form.className = "github-form";
+  userStarred.textContent =
+    "Usuario del repositorio al que vas a dar una estrella";
+  repoStarred.textContent = "Repositorio al que le vas a dar una estrella";
+  token.textContent = "Introduce aquí tu token";
+  submitButton.textContent = "Poner estrella";
+
+  userStarredInput.required;
+  repoStarredInput.required;
+  tokenInput.required;
+
+  info.appendChild(form);
+
+  form.appendChild(userStarred);
+  form.appendChild(userStarredInput);
+  form.appendChild(repoStarred);
+  form.appendChild(repoStarredInput);
+  form.appendChild(token);
+  form.appendChild(tokenInput);
+  form.appendChild(submitButton);
+
+  info.appendChild(successInfo);
+
+  submitButton.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    githubStarApi(
+      userStarredInput.value,
+      repoStarredInput.value,
+      tokenInput.value
+    );
+  });
 };
