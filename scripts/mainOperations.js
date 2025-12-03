@@ -91,6 +91,8 @@ const showProfileInfo = async (data) => {
   let welcomeText = document.getElementById("welcomeText");
   let logOutButton = document.createElement("button");
 
+  userInfo.innerHTML = "";
+
   userInfoTitle.className = "user-info-title";
   username.className = "username";
 
