@@ -80,15 +80,15 @@ const authenticate = (token) => {
     });
 };
 
-const getUserVnByLabel = async (user, label) => {
+const getUserVnByLabel = async (userId, labelId) => {
   let response = await fetch("https://api.vndb.org/kana/ulist", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      user: user,
-      filters: ["label", "=", label],
+      user: userId,
+      filters: ["label", "=", labelId],
       fields: USER_VN_ENTRY_FIELDS,
       results: 100,
     }),
