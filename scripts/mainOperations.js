@@ -132,16 +132,34 @@ const showProfileInfo = async (data) => {
     }
   });
 
+  let finishedNovels = (await getUserVnByLabel(data.id, finishedId)).results
+    .length;
+
+  let playingNovels = (await getUserVnByLabel(data.id, playingId)).results
+    .length;
+
+  let droppedNovels = (await getUserVnByLabel(data.id, droppedId)).results
+    .length;
+
+  let wishlistNovels = (await getUserVnByLabel(data.id, wishlistId)).results
+    .length;
+
+  let allNovels =
+    (await getUserVnByLabel(data.id, wishlistId)).results.length +
+    (await getUserVnByLabel(data.id, finishedId)).results.length +
+    (await getUserVnByLabel(data.id, playingId)).results.length +
+    (await getUserVnByLabel(data.id, droppedId)).results.length;
+
   let finishedTag = document.createElement("p");
-  finishedTag.textContent = `Terminadas (${(await getUserVnByLabel(data.id, finishedId)).results.length})`;
+  finishedTag.textContent = `Terminadas (${finishedNovels})`;
   let playingTag = document.createElement("p");
-  playingTag.textContent = `Jugando (${(await getUserVnByLabel(data.id, playingId)).results.length})`;
+  playingTag.textContent = `Jugando (${playingNovels})`;
   let droppedTag = document.createElement("p");
-  droppedTag.textContent = `Abandonadas (${(await getUserVnByLabel(data.id, droppedId)).results.length})`;
+  droppedTag.textContent = `Abandonadas (${droppedNovels})`;
   let wishlistTag = document.createElement("p");
-  wishlistTag.textContent = `Lista de deseos (${(await getUserVnByLabel(data.id, wishlistId)).results.length})`;
+  wishlistTag.textContent = `Lista de deseos (${wishlistNovels})`;
   let all = document.createElement("p");
-  all.textContent = `Todas (${(await getUserVnByLabel(data.id, wishlistId)).results.length + (await getUserVnByLabel(data.id, finishedId)).results.length + (await getUserVnByLabel(data.id, playingId)).results.length + (await getUserVnByLabel(data.id, droppedId)).results.length})`;
+  all.textContent = `Todas (${allNovels})`;
 
   finishedTag.addEventListener("click", async () => {
     let info = document.getElementById("infoSection");
@@ -234,6 +252,11 @@ const showProfileInfo = async (data) => {
   tagsInfo.appendChild(wishlistTag);
   tagsInfo.appendChild(all);
 
+  let userVnStatisticsChart = document.createElement("canvas");
+  userVnStatisticsChart.id = "userStatistics";
+  userInfo.appendChild(userVnStatisticsChart);
+  userVnChart(finishedNovels, playingNovels, droppedNovels, wishlistNovels);
+
   logOutButton.textContent = "Cerrar sesión";
   logOutButton.className = "logout-button";
   logOutButton.addEventListener("click", () => {
@@ -243,9 +266,12 @@ const showProfileInfo = async (data) => {
   userInfo.appendChild(logOutButton);
 
   welcomeText.textContent = "Bienvenid@ " + data.username;
+
+  document.getElementById("subahibi").style = "display: none";
 };
 
 const showNoProfileMessage = () => {
+  document.getElementById("subahibi").style = "display: auto";
   let userInfo = document.getElementById("userInfo");
   userInfo.innerHTML = "";
 
