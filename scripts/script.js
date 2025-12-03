@@ -13,6 +13,7 @@
   let latestVns = document.getElementById("latestVns");
   let gitHubStar = document.getElementById("gitHubStar");
   let vnChart = document.getElementById("vnChart");
+  let userSearchInput = document.getElementById("userSearchInput");
 
   await placeTopVns();
 
@@ -53,6 +54,8 @@
 
   userSearchButton.addEventListener("click", (event) => {
     event.preventDefault();
+
+    searchUser(userSearchInput.value);
   });
 
   latestVns.addEventListener("click", async () => {

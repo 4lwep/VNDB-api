@@ -367,3 +367,69 @@ const placeYearlyVnCountChart = async () => {
   console.log(years);
   yearlyVnChart(years, count);
 };
+
+const placeSearchedUserVnList = async (userId, userName) => {
+  let info = document.getElementById("infoSection");
+
+  info.innerHTML = "";
+
+  let pageTitle = document.createElement("h1");
+  pageTitle.className = "list-title";
+  pageTitle.textContent = "Lista de " + userName;
+  info.appendChild(pageTitle);
+
+  let divide = document.createElement("hr");
+  divide.style = "width: 100vh";
+  info.appendChild(divide);
+
+  let userLabels = await getUserLabels(userId);
+  let finishedId;
+  let playingId;
+  let droppedId;
+  let wishlistId;
+
+  userLabels.labels.forEach((label) => {
+    switch (label.label) {
+      case "Finished": {
+        finishedId = label.id;
+        break;
+      }
+      case "Playing": {
+        playingId = label.id;
+        break;
+      }
+      case "Dropped": {
+        droppedId = label.id;
+        break;
+      }
+      case "Wishlist": {
+        wishlistId = label.id;
+        break;
+      }
+    }
+  });
+
+  let finishedVnList = document.createElement("h2");
+  finishedVnList.className = "list-title";
+  finishedVnList.textContent = "Juegos terminados";
+  info.appendChild(finishedVnList);
+  placeUserVnList(await getUserVnByLabel(userId, finishedId));
+
+  let playingVnList = document.createElement("h2");
+  playingVnList.className = "list-title";
+  playingVnList.textContent = "Jugando actualmente";
+  info.appendChild(playingVnList);
+  placeUserVnList(await getUserVnByLabel(userId, playingId));
+
+  let droppedVnList = document.createElement("h2");
+  droppedVnList.className = "list-title";
+  droppedVnList.textContent = "Abandonadas";
+  info.appendChild(droppedVnList);
+  placeUserVnList(await getUserVnByLabel(userId, droppedId));
+
+  let wishlistVnList = document.createElement("h2");
+  wishlistVnList.className = "list-title";
+  wishlistVnList.textContent = "Lista de deseos";
+  info.appendChild(wishlistVnList);
+  placeUserVnList(await getUserVnByLabel(userId, wishlistId));
+};

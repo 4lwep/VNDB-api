@@ -180,3 +180,21 @@ const getVnCountFromYear = async (year) => {
 
   return data.count;
 };
+
+const searchUser = (username) => {
+  fetch("https://api.vndb.org/kana/user?q=" + username, {
+    method: "GET",
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Error en la petición: " + response.status);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      placeSearchedUserVnList(data[username].id, data[username].username);
+    })
+    .catch((error) => {
+      console.error("Hubo un problema:", error);
+    });
+};
