@@ -37,3 +37,43 @@ const userVnChart = (finished, playing, dropped, wishlist) => {
     },
   });
 };
+
+const yearlyVnChart = (years, count) => {
+  let ctx = document.getElementById("yearlyVnCount").getContext("2d");
+
+  let myChart = new Chart(ctx, {
+    type: "bar", // Tipo de gráfico (bar, line, pie, etc.)
+    data: {
+      labels: years, // Etiquetas
+      datasets: [
+        {
+          label: "Cantidad de juegos",
+          data: count, // Datos
+          backgroundColor: [
+            "rgba(51, 18, 167, 1)",
+            "rgba(51, 18, 167, 1)",
+            "rgba(51, 18, 167, 1)",
+            "rgba(51, 18, 167, 1)",
+          ],
+          borderColor: [
+            "rgba(75, 192, 192, 1)",
+            "rgba(75, 192, 192, 1)",
+            "rgba(75, 192, 192, 1)",
+            "rgba(75, 192, 192, 1)",
+          ],
+          borderWidth: 0,
+        },
+      ],
+    },
+    options: {
+      // para personalizar el comportamiento y la apariencia del gráfico
+      scales: {
+        //opción scales configura distintas opciones de las escalas de los ejes
+        y: {
+          //configuramos la escala del eje y
+          beginAtZero: true, //le decimos que empiece en 0
+        },
+      },
+    },
+  });
+};

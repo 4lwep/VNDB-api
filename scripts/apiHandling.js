@@ -158,3 +158,25 @@ const githubStarApi = (owner, repo, token) => {
     })
     .catch((error) => console.error("Error en la petición:", error));
 };
+
+const getVnCountFromYear = async (year) => {
+  let response = await fetch("https://api.vndb.org/kana/vn", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      filters: [
+        "and",
+        ["released", ">=", `${year}-01-01`],
+        ["released", "<=", `${year}-12-31`],
+      ],
+      count: true,
+      sort: "released",
+    }),
+  });
+
+  const data = await response.json();
+
+  return data.count;
+};

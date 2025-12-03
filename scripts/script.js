@@ -12,6 +12,7 @@
   let userSearchButton = document.getElementById("userSearchButton");
   let latestVns = document.getElementById("latestVns");
   let gitHubStar = document.getElementById("gitHubStar");
+  let vnChart = document.getElementById("vnChart");
 
   await placeTopVns();
 
@@ -60,5 +61,9 @@
 
   gitHubStar.addEventListener("click", () => {
     placeGithubStartsForm();
+  });
+
+  vnChart.addEventListener("click", async () => {
+    placeYearlyVnCountChart();
   });
 })();

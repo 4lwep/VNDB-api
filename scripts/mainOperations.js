@@ -331,3 +331,39 @@ const placeGithubStartsForm = () => {
     );
   });
 };
+
+const placeYearlyVnCountChart = async () => {
+  let info = document.getElementById("infoSection");
+
+  info.innerHTML = "";
+
+  let pageTitle = document.createElement("h1");
+  pageTitle.className = "list-title";
+  pageTitle.textContent = "Cantidad de Visual novels por año";
+  info.appendChild(pageTitle);
+
+  let divide = document.createElement("hr");
+  divide.style = "width: 100vh";
+  info.appendChild(divide);
+
+  let canvas = document.createElement("canvas");
+  canvas.id = "yearlyVnCount";
+  info.appendChild(canvas);
+
+  let years = [];
+  let currentYear = new Date().getFullYear();
+  for (i = 0; i <= currentYear - 2000; i++) {
+    years[i] = currentYear - (currentYear - 2000) + i;
+  }
+
+  let count = [];
+  for (const year of years) {
+    const result = await getVnCountFromYear(year);
+    count.push(result);
+  }
+
+  //let count = await Promise.all(years.map((year) => getVnCountFromYear(year))); ESTO SATURA A LA API
+
+  console.log(years);
+  yearlyVnChart(years, count);
+};
