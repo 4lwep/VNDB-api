@@ -34,6 +34,10 @@
   padding: 30px;
 }
 
+.tags-info > p:hover {
+  cursor: pointer;
+}
+
 .username {
   text-align: center;
 }
