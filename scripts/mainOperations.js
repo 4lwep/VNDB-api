@@ -308,6 +308,7 @@ const placeGithubStartsForm = () => {
   userStarredInput.required;
   repoStarredInput.required;
   tokenInput.required;
+  tokenInput.type = "password";
 
   info.appendChild(form);
 
@@ -343,7 +344,6 @@ const placeYearlyVnCountChart = async () => {
   info.appendChild(pageTitle);
 
   let divide = document.createElement("hr");
-  divide.style = "width: 100vh";
   info.appendChild(divide);
 
   let canvas = document.createElement("canvas");
@@ -364,7 +364,6 @@ const placeYearlyVnCountChart = async () => {
 
   //let count = await Promise.all(years.map((year) => getVnCountFromYear(year))); ESTO SATURA A LA API
 
-  console.log(years);
   yearlyVnChart(years, count);
 };
 
@@ -379,7 +378,6 @@ const placeSearchedUserVnList = async (userId, userName) => {
   info.appendChild(pageTitle);
 
   let divide = document.createElement("hr");
-  divide.style = "width: 100vh";
   info.appendChild(divide);
 
   let userLabels = await getUserLabels(userId);
